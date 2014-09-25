@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oracle SRM Sample App</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" %>
+  <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="container">
+
+  <nav>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="<%= root_path %>">SRM DEMO</a></li>
+        <% if current_token %>
+          <div class="auth">
+            <span class="badge"><%= current_token['scope'] %></span>
+            <a href="<%= delete_token_path %>">Clear token</a>
+          </div>
+        <% else %>
+          <li><%= render 'layouts/auth' %></li>
+        <% end %>
+  </nav>
+
+  <%= yield %>
+
+</div>
+
+</body>
+</html>

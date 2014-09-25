@@ -1,0 +1,17 @@
+<div class="row message">
+  <div class="pull-left">
+    <img src='<%= feed_item['author']['author_image'] %>' class="img-circle img-responsive" />
+  </div>
+  <div>
+    <b><%= feed_item['author']['name'] %></b>
+    <p><%= feed_item['body'] %></p>
+    <div class="pull-left">
+      <i class="fa fa-thumbs-o-up"></i><%= feed_item['likes_count'] %>&nbsp;&nbsp;
+      <i class="fa fa-comment"></i><%= feed_item['replies_count'] %>
+      <p class="label label-default">label</p>
+      <p class="label label-default">label</p>
+    </div>
+    <div class="pull-right">
+      <%= time_ago_in_words(feed_item['posted_at']) %> ago</div>
+  </div>
+</div>
