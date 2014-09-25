@@ -1,28 +1,17 @@
-== README
+# Oracle Social Relationship Management (SRM) API Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a barebones Ruby on Rails application that gives an example how to authenticate and use SRM's public API.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+* Rails 4.1.4
 
-* System dependencies
+## Usage
 
-* Configuration
+* Clone the application from Github: `git clone https://github.com/rparang/oracle_srm_sample_app.git`
 
-* Database creation
+* Run `bundle install`
 
-* Database initialization
+* Run the WEBrick server: `rails server`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+> Note: There is no database requirement. The example token is saved in a `token.json` file.
