@@ -16,3 +16,4 @@ This app is a barebones Ruby on Rails application that gives an example how to a
 
 > Note: There is no database requirement. The example token is saved in a `token.json` file.
 
+![SRM Sample app](http://f.cl.ly/items/1G0M2W041A173z1Z2S2Y/Oracle%20SRM%20Sample%20App.jpg)
