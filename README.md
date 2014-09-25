@@ -15,3 +15,4 @@ This app is a barebones Ruby on Rails application that gives an example how to a
 * Run the WEBrick server: `rails server`
 
 > Note: There is no database requirement. The example token is saved in a `token.json` file.
+
