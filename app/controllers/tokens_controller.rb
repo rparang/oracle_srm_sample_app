@@ -13,6 +13,7 @@ class TokensController < ApplicationController
     response = HTTParty.post(path, :query => params)
     response_body = JSON.parse(response.body)
     if response_body['access_token']
+      puts "RESPONSE: #{response_body}"
       puts ".....Saving token"
       token = Token.new
       token.save_token(response_body.to_json) 

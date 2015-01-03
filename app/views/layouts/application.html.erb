@@ -15,15 +15,21 @@
 
   <nav>
     <ul class="nav nav-tabs">
-      <li class="active"><a href="<%= root_path %>">SRM DEMO</a></li>
+      <li class="active"><a href="<%= root_path %>" style="cursor:pointer;">Messages</a></li>
         <% if current_token %>
+          <li>
           <div class="auth">
-            <span class="badge"><%= current_token['scope'] %></span>
-            <a href="<%= delete_token_path %>">Clear token</a>
+            <a class="badge" href="<%= delete_token_path %>">Logout</a>
           </div>
+          </li>
         <% else %>
-          <li><%= render 'layouts/auth' %></li>
+          <li>
+          <div class="auth">
+          <%= render 'layouts/auth' %>
+          </div>
+          </li>
         <% end %>
+    </ul>
   </nav>
 
   <%= yield %>

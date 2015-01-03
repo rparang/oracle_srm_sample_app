@@ -1,12 +1,8 @@
-<h1>Messages</h1>
-
-<div class="row">
-  <div class="col-md-7">
-    <% if @feed_items %>
-      <%= render 'messages/feed' %>
-    <% else %>
-      <%= render 'layouts/auth' %>
-    <% end %>
-  </div>
-  <div class="col-md-5">Placeholder</div>
+<br/>
+<div class="col-md-7 messages">
+  <% if @messages.any? %>
+    <%= render :partial => 'messages/message', :collection => @messages %>
+  <% else %>
+    <span>No messages found.</span>
+  <% end %>
 </div>
