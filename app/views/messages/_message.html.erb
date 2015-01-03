@@ -1,0 +1,19 @@
+<div class="row message">
+  <div class="pull-left">
+    <img src='<%= message['author']['author_image'] %>' class="img-circle img-responsive" />
+  </div>
+  <div>
+    <b><%= message['author']['name'] %></b>
+    <p><%= message['body'] %></p>
+    <br/>
+    <div class="pull-left">
+      <i class="fa fa-thumbs-o-up"></i><%= message['likes_count'] %>&nbsp;&nbsp;
+      <i class="fa fa-comment"></i><%= message['replies_count'] %>
+      <p class="label label-default">label</p>
+      <p class="label label-default">label</p>
+    </div>
+    <div class="pull-right">
+      <em><%= time_ago_in_words(message['posted_at']) %> ago</em>
+    </div>
+  </div>
+</div>

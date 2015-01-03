@@ -12,11 +12,11 @@ class TokensController < ApplicationController
 
     response = HTTParty.post(path, :query => params)
     response_body = JSON.parse(response.body)
+
     if response_body['access_token']
-      puts "RESPONSE: #{response_body}"
       puts ".....Saving token"
-      token = Token.new
-      token.save_token(response_body.to_json) 
+      auth = SrmApp.global.authorization || Authorization.new(srm_app: SrmApp.global)
+      auth.update_attributes!(response_body)
       redirect_to root_url
     else
       puts "No access token given"
@@ -24,10 +24,9 @@ class TokensController < ApplicationController
   end
 
   def refresh_token
-    token = Token.new
-    @refresh_token = token.token["refresh_token"]
+    auth = SrmApp.global.authorization
     path = ApplicationHelper::BASE_URI + "oauth/token"
-    params = { 'refresh_token' => @refresh_token,
+    params = { 'refresh_token' => auth.refresh_token,
                'redirect_uri' => ApplicationHelper::REDIRECT_URI,
                'client_id' => ApplicationHelper::APPLICATION_ID,
                'client_secret' => ApplicationHelper::APPLICATION_SECRET,
@@ -35,9 +34,10 @@ class TokensController < ApplicationController
 
     response = HTTParty.post(path, :query => params)
     response_body = JSON.parse(response.body)
+
     if response_body['access_token']
       puts ".....Refreshing token"
-      token.save_token(response_body.to_json) 
+      auth.update_attributes!(response_body)
       redirect_to root_url
     else
       puts "No access token given"
@@ -45,8 +45,9 @@ class TokensController < ApplicationController
   end
 
   def delete_token
-    token = Token.new
-    token.delete_token
+    if auth = SrmApp.global.authorization
+      auth.destroy
+    end
     redirect_to root_url
   end
 

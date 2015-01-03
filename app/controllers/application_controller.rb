@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_token
 
   def current_token
-    token = Token.new
-    @current_token = token.token
+    auth = SrmApp.global.authorization
+    @current_token = auth.access_token if auth
   end
 
 end

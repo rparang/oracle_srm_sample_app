@@ -1,11 +1,11 @@
 class Message
 
-  def self.all
-    obj = Token.new
-    token = obj.token
+  def self.fetch_all(options={})
+    auth = SrmApp.global.authorization
+    bundle_id = options[:bundle_id].present? ? options[:bundle_id] : SrmBundle.global.bundle_id
 
-    if token
-      response = HTTParty.get("#{ApplicationHelper::BASE_URI}/engage/v1/messages?bundle_id=#{ApplicationHelper::BUNDLE_ID}", :headers => { "Authorization" => "Bearer #{token['access_token']}"})
+    if auth
+      response = HTTParty.get("#{ApplicationHelper::BASE_URI}/engage/v1/messages?bundle_id=#{bundle_id}", :headers => { "Authorization" => "Bearer #{auth.access_token}"})
       return response['items']
     else
       return nil
