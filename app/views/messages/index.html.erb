@@ -1,6 +1,6 @@
 <br/>
-<div class="col-md-7 messages">
-  <% if @messages.any? %>
+<div class="messages">
+  <% if @messages && @messages.any? %>
     <%= render :partial => 'messages/message', :collection => @messages %>
   <% else %>
     <span>No messages found.</span>

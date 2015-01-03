@@ -1,11 +1,30 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body, p, th, td, input, h1, h2, h3, h4, h5 {
+  font-family: "Roboto", sans-serif;
+}
+
 .message {
-  margin: 0 0 10px 0;
-  padding: 7px;
-  background: #f0f0f0;
+  margin: 0 0 15px 0;
+  padding: 15px;
+  background: #ecf0f1;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
 
   img {
     margin-right: 10px;
   }
+}
+
+.messages {
+  padding: 15px;
 }
 
 div.auth {
@@ -24,6 +43,13 @@ div.auth {
   background-color: #2980b9 !important;
 }
 
+
 .nav .active {
   font-weight: bold;
+}
+
+div.header {
+  top: 0px;
+  background-color: #000;
+  padding: 5px 10px;
 }
