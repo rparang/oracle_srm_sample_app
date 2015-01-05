@@ -1,0 +1,27 @@
+<%= form_for(@srm_bundle) do |f| %>
+  <% if @srm_bundle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@srm_bundle.errors.count, "error") %> prohibited this srm_bundle from being saved:</h2>
+
+      <ul>
+      <% @srm_bundle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Bundle ID" %><br>
+    <%= f.text_field :bundle_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+  <br/>
+<% end %>

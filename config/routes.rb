@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   match '/refresh_token' => 'authorizations#update', :via => [:get]
   match '/delete_token' => 'authorizations#destroy', :via => [:get]
 
+  resources :srm_bundles
+
 end
