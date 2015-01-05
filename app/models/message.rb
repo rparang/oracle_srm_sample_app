@@ -5,10 +5,8 @@ class Message
     bundle_id = options[:bundle_id].present? ? options[:bundle_id] : SrmBundle.global.bundle_id
 
     if auth
-      response = HTTParty.get("#{ApplicationHelper::BASE_URI}/engage/v1/messages?bundle_id=#{bundle_id}", :headers => { "Authorization" => "Bearer #{auth.access_token}"})
-      return response['items']
-    else
-      return nil
+      response = SrmClient.fetch_engage_messages(auth, bundle_id)
+      response['items']
     end
   end 
 
