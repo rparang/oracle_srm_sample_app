@@ -2,15 +2,21 @@
 
 This app is a barebones Ruby on Rails application that gives an example how to authenticate and use SRM's public API.
 
-To keep the app simple, there is no database requirement and any reference to a specific user or login of a user in the sample app was avoided.
+For this application to work for you, you will need the following:
+* An SRM account login
+* An SRM bundle that includes Engage messages
 
-In typical OAuth implementations, it's likely your application will have user models and there will be some association of access tokens to these users. For example, you will have a `users` table and an `authentications` table, and a record in the `authentications` table will correspond to a user.
+To keep the app simple, all it does it show a list of messages that are tied to a given SRM bundle. An SRM bundle is a collection of resources (e.g. Facebook pages or Twitter accounts) hosted on your SRM account. If you don't have one of your own, you can also request to get access to an existing one. This app comes pre-populated with two SRM bundles for your use as examples, but you can add/remove them easily.
 
-For this app, we will only store a single JSON object returned to us from the OAuth process in `token.json` under `config/`, and any subsequent calls will use this at the application level.
+In order to authenticate the application with your SRM account, it will use OAuth to obtain an authentication token. In typical OAuth implementations, it's likely your application will have user models and there will be some association of access tokens to these users. For example, you will have a `users` table and an `authentications` table, and a record in the `authentications` table will correspond to a user.
 
-Note: a `bundle_id` is hard coded in the application helper. Access to `bundle_id` of 1276 is required for now.
+This application does store its authorization tokens inside the `srm_authorizations` table, but they are all tied to the same 'user', and mapped to a certain `srm_app`. There is a single SRM App that is provided in the code as the 'default' application. Feel free to use this one, or override it with your own (by deleting or updating the SRM App in the db, created by your seeds).
+
+To create the initial SRM App and SRM Bundles, you need to run `rake db:seed`, as suggested in the setup instructions.
 
 ## Requirements
+
+* Ruby (1.9.3 or above)
 
 * Rails 4.1.4
 
@@ -20,6 +26,16 @@ Note: a `bundle_id` is hard coded in the application helper. Access to `bundle_i
 
 * Run `bundle install`
 
-* Run the WEBrick server: `rails server`
+* Run 'rake db:migrate'
 
-![SRM Sample app](http://f.cl.ly/items/1G0M2W041A173z1Z2S2Y/Oracle%20SRM%20Sample%20App.jpg)
+* Run 'rake db:seed'
+
+* Run the Puma server: `rails s`
+
+Once you've completed the steps above, and ensured your account has access to a bundle with messags, and selected that bundle, you should see something like this:
+
+![SRM Sample app](http://note.io/17dRh5g)
+
+Here is a screencast demonstrating the application functionality:
+
+[SRM Sample App Demo Screencast](http://quick.as/oo7ltaq4)
