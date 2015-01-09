@@ -45,6 +45,11 @@ class SrmBundlesController < ApplicationController
     redirect_to srm_bundles_url, notice: 'Srm bundle was successfully destroyed.'
   end
 
+  def sync
+    SrmApp.global.authorization.sync
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_srm_bundle

@@ -3,7 +3,8 @@
   <%= form_tag("/", method: "GET") do %>
     <b>Current Bundle</b>: 
     <%=select_tag :bundle_id, options_for_select(@bundles, params[:bundle_id]), :onchange => "this.form.submit();" %>
-    &nbsp; (<%=link_to "Manage Bundles", srm_bundles_path%>)
+    &nbsp; [<%=link_to "Sync My Bundles", sync_bundles_path, :onclick => "$('#bundle_spinner').toggleClass('hidden'); return true;" %>]
+    &nbsp; <%=image_tag 'spinner.gif', :id => 'bundle_spinner', :class => 'hidden' %>
   <% end %>
   <hr/>
   <% if @messages && @messages.any? %>

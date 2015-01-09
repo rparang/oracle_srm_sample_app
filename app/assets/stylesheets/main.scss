@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
 
+.hidden {
+  visibility: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,6 +11,20 @@ body {
 
 body, p, th, td, input, h1, h2, h3, h4, h5 {
   font-family: "Roboto", sans-serif;
+}
+
+.flash-success {
+  background-color: #27ae60;
+  border: 1px solid #2ecc71;
+  padding: 10px;
+  color: #fff;
+}
+
+.flash-error {
+  background-color: #c0392b;
+  border: 1px solid #e74c3c;
+  padding: 10px;
+  color: #fff;
 }
 
 .message {

@@ -18,21 +18,24 @@
   <nav>
     <ul class="nav nav-tabs">
       <li class="active"><a href="<%= root_path %>" style="cursor:pointer;">Messages</a></li>
-        <% if current_token %>
-          <li>
-          <div class="auth">
-            <a class="badge" href="<%= delete_token_path %>">Logout</a>
-          </div>
-          </li>
-        <% else %>
-          <li>
-          <div class="auth">
-          <%= render 'layouts/auth' %>
-          </div>
-          </li>
-        <% end %>
+      <li>
+        <div class="auth">
+          <% if current_token %>
+            <a class="badge" onclick="$('#login_spinner').toggleClass('hidden');return true;" href="<%= delete_token_path %>">Logout</a>
+          <% else %>
+            <%= render 'layouts/auth' %>
+          <% end %>
+          <%=image_tag 'spinner.gif', :id => 'login_spinner', :class => 'hidden' %>
+        </div>
+      </li>
     </ul>
   </nav>
+
+  <% if flash[:error] %>
+    <div class="flash-error"><%=flash[:error]%></div>
+  <% elsif flash[:success] %>
+    <div class="flash-success"><%=flash[:success]%></div>
+  <% end %>
 
   <%= yield %>
 

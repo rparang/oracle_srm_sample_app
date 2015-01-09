@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103012139) do
+ActiveRecord::Schema.define(version: 20150108220925) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "srm_app_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150103012139) do
     t.integer  "expires_in"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_id"
   end
 
   create_table "srm_apps", force: true do |t|
@@ -31,8 +32,9 @@ ActiveRecord::Schema.define(version: 20150103012139) do
   end
 
   create_table "srm_bundles", force: true do |t|
-    t.string "bundle_id"
-    t.string "name"
+    t.string  "bundle_id"
+    t.string  "name"
+    t.integer "authorization_id"
   end
 
 end

@@ -4,7 +4,7 @@ class SrmClient
   base_uri "https://gatekeeper.staging.cloud.vitrue.com/"
 
   REDIRECT_URI       = "http://localhost:3000/gatekeeper/callback"
-  SCOPE              = "sem_engage"
+  SCOPE              = "sem_engage james_scope"
 
   def self.global_authorization_url
     "#{base_uri}/oauth/authorize?client_id=#{SrmApp.global.app_id}&scope=#{SCOPE}&redirect_uri=#{REDIRECT_URI}&response_type=code"
@@ -24,6 +24,14 @@ class SrmClient
 
   def self.fetch_engage_messages(auth, bundle_id)
     self.get("/engage/v1/messages?bundle_id=#{bundle_id}", :headers => { "Authorization" => "Bearer #{auth.access_token}"})
+  end
+
+  def self.fetch_accounts(auth)
+    self.get("/admin/v1/accounts", :headers => { "Authorization" => "Bearer #{auth.access_token}", 'Content-Type' => 'application/json'})
+  end
+
+  def self.fetch_bundles(auth)
+    self.get("/admin/v1/accounts/#{auth.account_id}/bundles", :headers => { "Authorization" => "Bearer #{auth.access_token}", 'Content-Type' => 'application/json'})
   end
 
   private

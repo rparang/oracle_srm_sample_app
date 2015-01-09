@@ -36,4 +36,15 @@ class AuthorizationsController < ApplicationController
     redirect_to root_url
   end
 
+  def sync_bundles
+    begin
+      SrmApp.global.authorization.sync_bundles
+      flash[:success] = "Bundles updated successfully."
+    rescue => e
+      flash[:error] = "An error occurred while updating bundles: #{e.message}"
+    end
+
+    redirect_to :back
+  end
+
 end

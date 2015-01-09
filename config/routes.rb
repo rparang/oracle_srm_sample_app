@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   match '/gatekeeper/callback' => 'authorizations#create', :via => [:get]
   match '/refresh_token' => 'authorizations#update', :via => [:get]
   match '/delete_token' => 'authorizations#destroy', :via => [:get]
-
-  resources :srm_bundles
+  match '/sync_bundles' => 'authorizations#sync_bundles', :via => [:get]
 
 end
